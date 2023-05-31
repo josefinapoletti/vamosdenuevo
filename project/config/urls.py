@@ -26,4 +26,5 @@ urlpatterns = [
     path('nombre/<nombre>/<apellido>/', views.nombre),
     path('miTemplate/', views.probando_template),
     path("azar/", views.numero_aleatorio),
+    path('miTemplateRender', views.probando_template_render)
 ]

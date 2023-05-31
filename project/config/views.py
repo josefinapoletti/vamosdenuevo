@@ -39,3 +39,16 @@ def numero_aleatorio(request):
         return HttpResponse(f"<h1> Has tirado el dado: 🎲{numero}✨ ¡Suerte! </h1")
     else:
         return HttpResponse(f"<h1> Has tirado el dado: 🎲{numero} <br> Sigue intentando hasta sacar 6 </h1")
+    
+
+
+def probando_template_render(request):
+    from django.shortcuts import render
+    return render(request,"template1.html")
+
+    #mi_html = open("./templates/template1.html", encoding="utf-8")
+    #mi_template = Template(mi_html.read())
+    #mi_html.close()
+    #mi_contexto = Context()
+    #mi_documento = mi_template.render(mi_contexto)
+    #return HttpResponse(mi_documento)
