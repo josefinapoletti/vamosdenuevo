@@ -1,4 +1,5 @@
 from django.http import HttpResponse
+from django.template import Context, Template
 
 def saludo(request):
     nombre = input('Escribe tu nombre: ')
@@ -7,10 +8,16 @@ def saludo(request):
 def segunda_vista(request):
     return HttpResponse("segunda vista")
 
+
 def dia_de_hoy(request):
     from datetime import datetime
     dia = datetime.now()
     return HttpResponse (f"<h1> {dia} <h1>" )
+
+def nombre(request, nombre:str, apellido: str):
+    nombre= nombre.capitalize()
+    apellido =apellido.capitalize()
+    return HttpResponse(f"{apellido},{nombre}")
 
 def mi_template(request):
     from .settings import BASE_DIR
