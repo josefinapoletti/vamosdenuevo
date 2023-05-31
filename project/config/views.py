@@ -1,5 +1,7 @@
 from django.http import HttpResponse
 from django.template import Context, Template
+from django.shortcuts import render
+from datetime import datetime
 
 def saludo(request):
     nombre = input('Escribe tu nombre: ')
@@ -43,12 +45,16 @@ def numero_aleatorio(request):
 
 
 def probando_template_render(request):
-    from django.shortcuts import render
-    return render(request,"template1.html")
+    
+    nombre= "Louis"
+    apellido = "Beethoven"
+    datos = {"nombre": nombre, "apellido": apellido}
+    fecha_hora = datetime.now()
+    fecha_hora_f = fecha_hora.strftime(r"%d/%m/%Y a las %H:%M:%S.%f")
+    datos['fecha_hora'] = fecha_hora_f
+    return render(request,"template1.html",context=datos)
 
-    #mi_html = open("./templates/template1.html", encoding="utf-8")
-    #mi_template = Template(mi_html.read())
-    #mi_html.close()
-    #mi_contexto = Context()
-    #mi_documento = mi_template.render(mi_contexto)
-    #return HttpResponse(mi_documento)
+def probando_template2(request):
+    lista_de_notas = [2,2,3,7,5]
+    contexto = {"notas": lista_de_notas}
+    return render(request, "template2.html", context=contexto )
