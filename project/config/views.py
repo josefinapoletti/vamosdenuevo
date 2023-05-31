@@ -23,14 +23,13 @@ def nombre(request, nombre:str, apellido: str):
     apellido =apellido.capitalize()
     return HttpResponse(f"{apellido},{nombre}")
 
-def mi_template(request):
-    from .settings import BASE_DIR
-    mi_html = open(BASE_DIR / "templates/template1.html")
-    plantilla = Template(mi_html.read())
-    datos = {'nombre': 'Juan', 'apellido': 'Perez'}
-    contexto = Context(datos)
-    documento = plantilla.render(contexto)
-    return HttpResponse(documento)
+def probando_template(request):
+    mi_html = open("./templates/template1.html", encoding="utf-8")
+    mi_template = Template(mi_html.read())
+    mi_html.close()
+    mi_contexto = Context()
+    mi_documento = mi_template.render(mi_contexto)
+    return HttpResponse(mi_documento)
 
 def numero_aleatorio(request):
     import random
