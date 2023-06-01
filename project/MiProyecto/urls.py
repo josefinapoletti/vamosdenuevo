@@ -1,5 +1,5 @@
 """
-URL configuration for config project.
+URL configuration for MiProyecto project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.2/topics/http/urls/
@@ -15,17 +15,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from . import views
-
+from django.urls import path, include
+from .views import index
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('saludar/', views.saludo),
-    path("saludar2/", views.saludo_con_input),
-    path('otra-vista/', views.segunda_vista),
-    path('nombre/<nombre>/<apellido>/', views.nombre),
-    path('miTemplate/', views.probando_template),
-    path("azar/", views.numero_aleatorio),
-    path('miTemplateRender/', views.probando_template_render),
-    path('miTemplate2', views.probando_template2)
+    path("", index, name="index"),
+    path("cliente/", include("cliente.urls", "cliente"))
 ]
