@@ -5,6 +5,7 @@ from django.shortcuts import render
 from django.template import Context, Template
 
 
+
 def saludo(request):
     return HttpResponse("Hola Django - Coder")
 
@@ -65,6 +66,7 @@ def probando_template_render(request):
 
 
 def probando_template2(request):
+
     lista_de_notas = [2, 2, 3, 7, 5]
     contexto = {"notas": lista_de_notas}
     return render(request, "template2.html", contexto)
