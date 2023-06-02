@@ -7,9 +7,9 @@ class Pais(models.Model):
 
 
 class Cliente(models.Model):
-    Nombre = models.CharField(max_length=50)
-    Apellido = models.CharField(max_length=50)
+    nombre = models.CharField(max_length=50)
+    apellido = models.CharField(max_length=50)
     nacimiento = models.DateField(null=True)
     pais_origen_id = models.ForeignKey(Pais, on_delete=models.SET_NULL, null=True)
     def __str__(self):
-        return self.Nombre
+        return self.nombre
